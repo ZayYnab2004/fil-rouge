@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justicea Law Firm Landing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+       
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: url('https://i.pinimg.com/736x/a6/ad/d0/a6add09b322cf78e304c6cc4b8b374d7.jpg') no-repeat center center/cover; /* Replace with your image */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: none;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            color:#FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .hero-content {
+            padding: 50px;
+            max-width: 850px;
+            margin-top: auto; 
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .hero-content h1::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+           
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn.primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+     
+        .expertise-section {
+            padding: 50px;
+            text-align: center;
+            background: #FAF9F4; 
+        }
+
+        .expertise-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #4a3728;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .expertise-item {
+            text-align: center;
+        }
+
+        .expertise-item img {
+            width: 50px;
+            margin-bottom: 20px;
+        }
+
+        .expertise-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .expertise-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+       
+       
+        .attorneys-section {
+            padding: 50px;
+            text-align: center;
+            background: #4a3728;
+            color: #fff;
+        }
+
+        .attorneys-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .attorneys-section p.subtitle {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        .attorneys-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .attorney-item {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        .attorney-item img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .attorney-item h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .attorney-item p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .attorneys-section .contact-btn {
+            padding: 15px 30px;
+            font-size: 14px;
+            text-transform: uppercase;
+            background: #94744E;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .attorneys-section .carousel-indicators {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .carousel-indicators span {
+            width: 10px;
+            height: 10px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .carousel-indicators span.active {
+            background: #fff;
+        }
+    
+        .clients-section {
+            max-width: 1500px;
+            margin: 0 auto;
+            background: white;
+            padding: 80px 50px;
+        }
+
+        .clients-header {
+            margin-bottom: 60px;
+        }
+
+        .clients-header h2 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .clients-intro {
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .clients-intro p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            background: #2c2c2c;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #444;
+            transform: translateY(-2px);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            padding: 30px 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .stars {
+            color: #d4af37;
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #d4af37;
+        }
+
+        .client-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .client-details h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .client-details p {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .bottom-contact {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .bottom-contact .contact-btn {
+            background: #2c2c2c;
+            color: white;
+            padding: 18px 40px;
+            font-size: 14px;
+        }
+        .footer-section {
+            padding: 40px 50px;
+            background: #1a1a1a;
+            color: #fff;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Adjusted to 3 columns */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            max-width: 1900px;
+        }
+
+        .footer-column {
+            text-align: left;
+        }
+
+        .footer-column img {
+            width: 40px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-column .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .footer-column .social-icons a {
+            color: #ccc;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .footer-column .social-icons a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #ccc;
+            font-size: 12px;
+            border-top: 1px solid #333;
+            max-width: 1900px;
+            margin: 0 auto;
+        }
+
+        
+    </style>
+</head>
+<body>
+   
+    <header class="hero-section">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="lawyers imag/Crée un logo moderne sur le thème du droit (justice) avec une balance ou un bouclier, background black.jpg" alt="Law Firm Logo"> <!-- Replace with your logo -->
+                <span>LAW FIRM</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="#">LAWYERS</a></li>
+                <li><a href="#">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h1>WE ARE JUSTICEA A LAW FIRM<br>BASED IN CASABLANCA, MOROCCO</h1>
+            <p>Welcome to Justicea, a trusted law firm dedicated to providing expert legal advice and representation. We believe justice begins with clarity – and we’re here to make the law work for you.</p>
+            <div class="hero-buttons">
+                <button class="btn primary">CONTACT US</button>
+               
+            </div>
+        </div>
+    </header>
+
+  
+    <section class="expertise-section">
+        <h2>OUR LEGAL EXPERTISE</h2>
+        <div class="expertise-grid">
+            <div class="expertise-item">
+                <img src="lawyers imag/Capture d'écran 2025-06-04 162617.png" alt="Banking Icon">
+                <h3>BANKING & FINANCE</h3>
+                <p>Adipiscing nam neque hendrerit nec pellentesque diam a. Varius quisque odio mauris lectus co...</p>
+            </div>
+            <div class="expertise-item">
+                <img src="lawyers imag/Capture d'écran 2025-06-04 162718.png" alt="Family Law Icon"> 
+                <h3>FAMILY LAW</h3>
+                <p>Adipiscing nam neque hendrerit nec pellentesque diam a. Varius quisque odio mauris lectus co...</p>
+            </div>
+            <div class="expertise-item">
+                <img src="lawyers imag/Capture d'écran 2025-06-04 162738.png" alt="Business Law Icon"> 
+                <h3>BUSINESS LAW</h3>
+                <p>Adipiscing nam neque hendrerit nec pellentesque diam a. Varius quisque odio mauris lectus co...</p>
+            </div>
+            <div class="expertise-item">
+                <img src="lawyers imag/Capture d'écran 2025-06-04 162800.png" alt="Real Estate Icon">
+                <h3>REAL ESTATE</h3>
+                <p>Adipiscing nam neque hendrerit nec pellentesque diam a. Varius quisque odio mauris lectus co...</p>
+            </div>
+            <div class="expertise-item">
+                <img src="lawyers imag/Capture d'écran 2025-06-04 162820.png" alt="Civil Law Icon"> 
+                <h3>CIVIL LAW</h3>
+                <p>Adipiscing nam neque hendrerit nec pellentesque diam a. Varius quisque odio mauris lectus co...</p>
+            </div>
+            <div class="expertise-item">
+                <img src="lawyers imag/Capture d'écran 2025-06-04 162846.png" alt="Corporate Law Icon"> 
+                <h3>CORPORATE LAW</h3>
+                <p>Adipiscing nam neque hendrerit nec pellentesque diam a. Varius quisque odio mauris lectus co...</p>
+            </div>
+        </div>
+    </section>
+    <!-- Attorneys Section -->
+    <section class="attorneys-section">
+        <h2>Our Attorneys</h2>
+        <p class="subtitle">Various quisque odio maurise actual attorneys purus fugit voluptat pet</p>
+        <div class="attorneys-grid">
+            <div class="attorney-item">
+                <img src="lawyers imag/lawyer1 girl.jpg" alt="Attorney 1">
+                <h3>Jackson Bauer</h3>
+                <p>Finance Lawyer</p>
+            </div>
+            <div class="attorney-item">
+                <img src="lawyers imag/lawyer2 girl.jpg" alt="Attorney 2">
+                <h3>Stephanie Reilly</h3>
+                <p>Criminal Defence Lawyer</p>
+            </div>
+            <div class="attorney-item">
+                <img src="lawyers imag/lawyerkoko.jpg" alt="Attorney 3">
+                <h3>Matthew Webb</h3>
+                <p>Tax Lawyer</p>
+            </div>
+        </div>
+        <button class="contact-btn">Contact Us</button>
+        
+    </section>
+    <!-- Clients Section -->
+    <section class="clients-section" id="clients">
+        <div class="clients-header">
+            <h2>Our Clients</h2>
+            <div class="clients-intro">
+                <p>We are proud to serve a diverse clientele ranging from individuals to large corporations. Our commitment to excellence and personalized service has earned us the trust and loyalty of our clients.</p>
+                <p>Every case is unique, and we approach each one with the dedication and expertise it deserves. Our track record speaks for itself through the testimonials of those we've had the privilege to represent.</p>
+                <button class="contact-btn">Contact Us</button>
+            </div>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Justicea provided exceptional legal representation during a complex business acquisition. Their attention to detail and strategic approach made all the difference. I highly recommend their services to anyone seeking top-tier legal counsel."</p>
+                <div class="client-info">
+                    <div class="client-avatar">
+                        <img src="https://t4.ftcdn.net/jpg/12/49/12/63/360_F_1249126338_leS5yTD2NdGuTra86mGyq9heEAxLbX5O.jpg">
+                    </div>
+                    <div class="client-details">
+                        <h4>Stephen Morten</h4>
+                        <p>Client since 2018</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"The team at Justicea handled my family law case with incredible sensitivity and professionalism. They guided me through a difficult time with compassion and achieved an outcome that exceeded my expectations."</p>
+                <div class="client-info">
+                    <div class="client-avatar">
+                        <img src="https://t4.ftcdn.net/jpg/12/49/12/63/360_F_1249126338_leS5yTD2NdGuTra86mGyq9heEAxLbX5O.jpg">
+                    </div>
+                    <div class="client-details">
+                        <h4>Kalen Cameron</h4>
+                        <p>Client since 2019</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Outstanding legal expertise combined with genuine care for their clients. Justicea successfully resolved my real estate dispute and kept me informed throughout the entire process. Truly exceptional service."</p>
+                <div class="client-info">
+                    <div class="client-avatar">
+                        <img src="https://t4.ftcdn.net/jpg/12/49/12/63/360_F_1249126338_leS5yTD2NdGuTra86mGyq9heEAxLbX5O.jpg" alt="Neil Porter">
+                    </div>
+                    <div class="client-details">
+                        <h4>Neil Porter</h4>
+                        <p>Client since 2017</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-contact">
+            <button class="contact-btn">Contact Us</button>
+        </div>
+    </section>
+    <footer class="footer-section">
+        <div class="footer-column">
+            <img src="logo-placeholder.png" alt="Law Firm Logo">
+            <p>Adipiscing nam neque hendrerit nec pellentesque diam a. Varius quisque odio maurise lectus consectetur sed.</p>
+        </div>
+        <div class="footer-column">
+            <h4>Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Find Us</h4>
+            <p>43 W. Weston Road Fairmage</p>
+            <p>AL 56-35E</p>
+            <p>(257) 889-4605</p>
+            <p>team@law.com</p>
+        </div>
+        <div class="footer-column">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>© Copyright Law Firm 2025 - Design by Firma Guru</p>
+    </div>
+   
+</body>
+</html>
