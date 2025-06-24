@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($client && password_verify($mot_de_passe, $client['mot_de_passe'])) {
         $_SESSION['client_id'] = $client['id_client'];
         $_SESSION['client_nom'] = $client['nom'];
-        header("Location: home.php");
+        header("Location: displayavocat.php");
         exit;
     } else {
         $erreur = "Email ou mot de passe incorrect.";

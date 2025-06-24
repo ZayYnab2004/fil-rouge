@@ -19,7 +19,9 @@
                     <li><a href="home.php">HOME</a></li>
                     <li><a href="about.php">About US</a></li>
                     <li><a href="displayAvocat.php">LAWYERS</a>
-                    <li><a href="contact.html">CONTACT US</a></li>
+                    <li><a href="contact.php">CONTACT US</a></li>
+                    <li><a href="dashboard_avocat.php">Avocat</a></li>
+                    <li><a href="dashboard_client.php">Client</a></li>
                 </ul>
             </nav>
         </div>

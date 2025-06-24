@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="form-section">
-    <h2>Welcome back!</h2>
+    <h2>Welcome back Avocat!</h2>
     <p>Welcome all your data! Login to access all your data</p>
 
         <?php if ($erreur): ?>

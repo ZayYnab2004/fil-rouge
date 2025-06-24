@@ -2,6 +2,8 @@
 session_start();
 require 'config.php';
 
+
+
 $city = isset($_POST['city']) ? trim($_POST['city']) : '';
 $language = isset($_POST['language']) ? trim($_POST['language']) : '';
 $specialty = isset($_POST['specialty']) ? trim($_POST['specialty']) : '';
@@ -90,7 +92,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         .nav a {
             color: #fff;
-            background: #604B33;
+           
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 6px;
@@ -264,8 +266,10 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="nav">
         <a href="home.php">Home</a>
         <a href="displayAvocat.php">Lawyers</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="about.php">About Us</a>
+        <a href="contact.php">Contact Us</a>
+        <a href="dashboard_avocat.php">Avocat</a>
+                   <a href="dashboard_client.php">Client</a>
     </div>
 </div>
 
@@ -321,7 +325,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p><strong>Spécialité:</strong> <?= htmlspecialchars($row['nom_specialite']) ?></p>
                 <div class="buttons">
                     <a href="profilAvocat.php?id=<?= urlencode($row['id_avocat']) ?>">Voir le profil</a>
-                    <a href="contacterAvocat.php?id=<?= urlencode($row['id_avocat']) ?>" class="contact">Contacter</a>
+                    <a href="<?= isset($_SESSION['client_id']) ? 'contacterAvocat.php?id=' . urlencode($row['id_avocat']) : 'loginClient.php'; ?>" class="contact">Contacter</a>
+
                 </div>
             </div>
         <?php endforeach; ?>

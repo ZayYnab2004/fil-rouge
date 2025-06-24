@@ -487,15 +487,18 @@ $today_appointments = count(array_filter($rendezvous, fn($r) => $r['date_rdv'] =
         }
 
         .modal-content {
-            background-color: #FAF9F4;
-            margin: 10% auto;
-            padding: 30px;
-            border: 2px solid #604B33;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 40px rgba(96, 75, 51, 0.3);
-        }
+    background-color: #FAF9F4;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border: 2px solid #604B33;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(96, 75, 51, 0.3);
+}
 
         .modal-header {
             display: flex;
@@ -631,6 +634,7 @@ $today_appointments = count(array_filter($rendezvous, fn($r) => $r['date_rdv'] =
                 flex-direction: column;
             }
         }
+        
     </style>
 </head>
 <body>
@@ -654,11 +658,13 @@ $today_appointments = count(array_filter($rendezvous, fn($r) => $r['date_rdv'] =
                 <a href="logoutavocat.php" class="logout-btn">
                     <i class="fas fa-sign-out-alt"></i> Déconnexion
         </a>
-
+        <a href="modifierprofil.php" class="edit-profile-btn" style="margin-right: 15px; background-color: #604B33; color: white; padding: 10px 15px; border-radius: 6px; text-decoration: none;">
+    <i class="fas fa-user-edit"></i> Modifier Profil
+</a>
             </div>
         </div>
 
-        <!-- Stats Grid -->
+
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-icon total">
@@ -906,14 +912,14 @@ $today_appointments = count(array_filter($rendezvous, fn($r) => $r['date_rdv'] =
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize filter to show all appointments
+           
             filterAppointments('all');
 
-            // Add click handlers for modal close
+            
             document.querySelector('.close').addEventListener('click', closeModal);
             document.querySelector('.btn-cancel-modal').addEventListener('click', closeModal);
 
-            // Close modal when clicking outside
+           
             window.addEventListener('click', function(event) {
                 if (event.target === document.getElementById('editModal')) {
                     closeModal();

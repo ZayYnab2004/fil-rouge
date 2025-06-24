@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +19,14 @@
                
             </div>
             <ul class="nav-links">
-                <li><a href="#">HOME</a></li>
-                <li><a href="about.php">About US</a></li>
-                <li><a href="displayAvocat.php">LAWYERS</a>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="dashboard_avocat.php">Avocat</a></li>
-                <li><a href="dashboard_client.php">Client</a></li>
-            </ul>
-        </nav>
+    <li><a href="#">HOME</a></li>
+    <li><a href="about.php">About US</a></li>
+    <li><a href="redirect_avocat.php">Avocats</a></li>
+    <li><a href="contact.php">Contact</a></li>
+    <li><a href="dashboard_avocat.php">Avocat</a></li>
+    <li><a href="dashboard_client.php">Client</a></li>
+</ul>
+</nav>
         <div class="hero-content">
             <h1>WE ARE JUSTICEA A LAW FIRM<br>BASED IN CASABLANCA, MOROCCO</h1>
             <p>Welcome to Justicea, a trusted law firm dedicated to providing expert legal advice and representation. We believe justice begins with clarity – and we’re here to make the law work for you.</p>

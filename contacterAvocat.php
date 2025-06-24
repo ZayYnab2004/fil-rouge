@@ -2,7 +2,6 @@
 session_start();
 require 'config.php';
 
-
 $errors = [];
 $success = '';
 
@@ -17,7 +16,6 @@ if ($id_avocat <= 0) {
     die("Avocat invalide.");
 }
 
-
 $stmt = $pdo->prepare("SELECT prenom, nom FROM avocat WHERE id_avocat = ?");
 $stmt->execute([$id_avocat]);
 $avocat = $stmt->fetch();
@@ -26,17 +24,15 @@ if (!$avocat) {
 }
 $avocat_nom = $avocat['prenom'] . ' ' . $avocat['nom'];
 
-
 $allowed_hours = [
     "09:30", "10:00", "10:30", "11:00", "11:30",
     "12:00", "12:30", "13:00", "13:30", "14:00",
     "14:30", "15:00", "15:30", "16:00", "16:30"
 ];
 
-
 function isWeekend($date) {
     $dayNum = date('N', strtotime($date));
-    return $dayNum >= 6; 
+    return $dayNum >= 6;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,22 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date_rdv = $_POST['date_rdv'] ?? '';
     $heure_rdv = $_POST['heure_rdv'] ?? '';
 
-    
     if (!$sujet || !$description || !$date_rdv || !$heure_rdv) {
         $errors[] = "Tous les champs sont obligatoires.";
     }
 
-    
     if ($date_rdv && isWeekend($date_rdv)) {
         $errors[] = "Les rendez-vous sont disponibles uniquement du lundi au vendredi.";
     }
 
-    
     if ($heure_rdv && !in_array($heure_rdv, $allowed_hours)) {
         $errors[] = "L'heure doit être comprise entre 09:30 et 16:30 (toutes les demi-heures).";
     }
 
-    
     if (empty($errors)) {
         $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM rendezvous WHERE id_avocat = ? AND date_rdv = ? AND heure_rdv = ?");
         $stmtCheck->execute([$id_avocat, $date_rdv, $heure_rdv]);
@@ -69,16 +61,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Insert if no errors
     if (empty($errors)) {
         $stmtInsert = $pdo->prepare("INSERT INTO rendezvous (id_client, id_avocat, sujet, description, date_rdv, heure_rdv, statut) VALUES (?, ?, ?, ?, ?, ?, 'en attente')");
         $success = $stmtInsert->execute([$id_client, $id_avocat, $sujet, $description, $date_rdv, $heure_rdv])
-            ? "Votre demande de rendez-vous a été envoyée avec succès."
+            ? "Votre demande de rendez-vous a été envoyée avec succès. Redirection en cours vers votre tableau de bord..."
             : "Erreur lors de la prise de rendez-vous.";
+
+        if ($success && strpos($success, "succès")) {
+            echo "<script>
+                setTimeout(function() {
+                    window.location.href = 'displayAvocat.php';
+                }, 2000);
+            </script>";
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -248,7 +246,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="home.php">HOME</a></li>
             <li><a href="about.php">About US</a></li>
             <li><a href="displayAvocat.php">LAWYERS</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.php">Contact</a></li>
             <li><a href="dashboard_avocat.php">Avocat</a></li>
             <li><a href="dashboard_client.php">Client</a></li>
         </ul>

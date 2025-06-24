@@ -4,7 +4,7 @@ require 'config.php';
 $errors = [];
 $success_message = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['create_account'])) {
     
     $nom = trim($_POST['nom'] ?? '');
     $prenom = trim($_POST['prenom'] ?? '');
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mot_de_passe = $_POST['mot_de_passe'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
 
-   
+    // التحقق من الحقول
     if ($nom === '') $errors['nom'] = 'Le nom est requis.';
     if ($prenom === '') $errors['prenom'] = 'Le prénom est requis.';
     if ($email === '') {
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['confirm_password'] = 'Les mots de passe ne correspondent pas.';
     }
 
-    
+    // التحقق من البريد الإلكتروني
     if (empty($errors)) {
         $stmt = $pdo->prepare("SELECT id_client FROM client WHERE email = ?");
         $stmt->execute([$email]);
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-   
+    // الإدخال في قاعدة البيانات
     if (empty($errors)) {
         $hashed_password = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$nom, $prenom, $email, $hashed_password]);
 
         $success_message = "Inscription réussie !";
-        $_POST = []; // Clear form
+        $_POST = []; 
         header("Location: loginClient.php");
         exit;
     }
@@ -59,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Inscription Client</title>
     <link rel="stylesheet" href="singupclient.css">
-       
 </head>
 <body>
     <div class="wrapper">
@@ -98,7 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••">
                 <?php if (!empty($errors['confirm_password'])): ?><div class="error"><?= $errors['confirm_password'] ?></div><?php endif; ?>
 
-                <button type="submit">Create account</button>
+                <!-- الزر بعد التعديل -->
+                <button type="submit" name="create_account">Create account</button>
             </form>
         </div>
     </div>

@@ -3,7 +3,7 @@ session_start();
 
 $erreur = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ((isset($_POST['Connexion']))) {
     $email = $_POST['email'] ?? '';
     $mot_de_passe = $_POST['mot_de_passe'] ?? '';
 
@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erreur = "L'adresse e-mail ou le mot de passe est incorrect.";
     }
 }
+
 ?>
 
 
@@ -68,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="mot_de_passe">Mot de passe :</label><br>
         <input type="password" name="mot_de_passe" id="mot_de_passe" required><br><br>
 
-        <button type="submit">Connexion</button>
+        <button type="submit" name="Connexion">Connexion</button>
     </form>
 
 </body>
